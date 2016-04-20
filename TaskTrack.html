@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html>
+<head>
+<style> 
+.flex-container {
+    display: -webkit-flex;
+    display: flex;
+    width: 1024px;
+    height: 768px;
+    background-color: green;
+	-webkit-justify-content: center;
+	justify-content: center;
+}
+
+.flex-item {
+    background-color: lightgrey;
+    width: 512px;
+    height: 384px;
+    margin: 10px;
+}
+div.{
+	font-size:10000px;
+}
+table{font-size:30px;}
+</style>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
+
+<script>
+
+
+$(document).ready(function(){
+var data = [
+	{"name": "Test Task #1", "date": "12/01/2012", "assigned": "John Doe" },
+	{"name": "Test Task #2", "date": "12/02/2012", "assigned": "John Doe" },
+	{"name": "Test Task #3", "date": "12/03/2012", "assigned": "John Doe" },
+	{"name": "Test Task #4", "date": "12/04/2012", "assigned": "John Doe" },
+	{"name": "Test Task #5", "date": "12/05/2012", "assigned": "John Doe" },
+	{"name": "Test Task #6", "date": "12/06/2012", "assigned": "John Doe" },
+	{"name": "Test Task #7", "date": "12/07/2012", "assigned": "John Doe" }
+];
+
+var output="";
+
+for (var i in data){
+  output+="<li>" + data[i].name + "   " + data[i].date + "  " + data[i].assigned+"</li>";
+}
+  document.getElementById("prevData").innerHTML=output;
+  
+  
+  $( "#submitId" ).click(function() {
+  
+  if($.trim($('#tnameId').val()) == ''){
+      alert('Task is not valid');
+	  return;
+   }
+   
+   if($.trim($('#dateId').val()) == ''){
+      alert('Date is not valid');
+	  return;
+   }
+   
+   if($.trim($('#assignedId').val()) == ''){
+      alert('Asignee is not valid');
+	  return;
+   }
+  
+  
+  
+  output+="<li>" + $('#tnameId').val() + "   " + $('#dateId').val() + "  " + $('#assignedId').val() +"</li>";
+  document.getElementById("prevData").innerHTML=output;
+  
+  $('#tnameId').val('');
+  $('#dateId').val('');
+  $('#assignedId').val('');
+
+});
+  
+});
+
+
+
+</script>
+</head>
+<body>
+
+<div class="flex-container">
+<div class="flex-item"><center>
+<h1>Task Tracker</h1>
+<p>v2.0</p>
+
+<h2>Create A Task</h2> <br>
+Task name: <br><input type="text" id="tnameId"><br>
+  Date:<br> <input type="date" id="dateId" placeholder="mm/dd/year"><br>
+ Assigned To <br><input type="text" id="assignedId"><br>
+ <button id="submitId">Submit</button></center>
+
+
+</div>
+<div class="flex-item">
+<center>
+<h2>Existing Tasks</h2>
+<div id="prevData">
+</center>
+</div>
+</div>
+<div>
+
+
+
+</div>
+</body>
+</html>
